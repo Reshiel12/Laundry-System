@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* 🌊 Fade + Slide */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🔐 Shake */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+/* ✨ Floating Labels */
+.inputGroup {
+  position: relative;
+  margin: 15px 0;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.inputGroup label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  color: #888;
+  pointer-events: none;
+  transition: 0.3s ease;
+  background: white;
+  padding: 0 5px;
+}
+
+.inputGroup input:focus + label,
+.inputGroup input:valid + label {
+  top: -8px;
+  font-size: 12px;
+  color: #ff6b9e;
+}
+
+/* 💥 Ripple Effect */
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: rippleEffect 0.6s linear;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes rippleEffect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
